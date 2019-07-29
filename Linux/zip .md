@@ -1,4 +1,4 @@
-# ZIP Skills
+# 							ZIP Skills
 
 ### Ⅰ. how to find and unzip one of file/folder in a big zip file
 
@@ -7,7 +7,7 @@
 
 1. original gz data
 
-   ![1563363742179](C:\Users\ZHENGNE\AppData\Roaming\Typora\typora-user-images\1563363742179.png)
+   ![1563363742179](D:\Typora\MKDFiles\media\1563363742179.png)
 
 2. check the zip file lists
 
@@ -33,7 +33,7 @@
 
    *get the zip file lists as below:*
 
-   ![1563367117286](C:\Users\ZHENGNE\AppData\Roaming\Typora\typora-user-images\1563367117286.png)
+   ![1563367117286](D:\Typora\MKDFiles\media\1563367117286.png)
 
    
 
@@ -48,29 +48,30 @@
    unzip the file with below command
 
    ```shell
-   tar xf 20190614.tar.gz export/home/cosconedi/app2/intermedia/20190614/intermedia/COS_CPGP/BKGEQD/20190614/I_F4CFEE06B7DF9D03D59B83527B67F549
+   tar -zxvf 20190614.tar.gz export/home/cosconedi/app2/intermedia/20190614/intermedia/COS_CPGP/BKGEQD/20190614/I_F4CFEE06B7DF9D03D59B83527B67F549
    ```
 
-   ![1563367708534](C:\Users\ZHENGNE\AppData\Roaming\Typora\typora-user-images\1563367708534.png)
+   ![1563367708534](D:\Typora\MKDFiles\media\1563367708534.png)
 
    or unzip to the specific path
 
-   - https://blog.csdn.net/u012856866/article/details/76057871
+   - https://segmentfault.com/q/1010000004490284
    
      >-c ：create 建立压缩档案的参数；
   >
-     >-x ： 解压缩压缩档案的参数；
-     >
-     >-z ： 是否需要用gzip压缩；
-     >
-     >-v： 压缩的过程中显示档案；
-     >
-     >-f： 置顶文档名，在f后面立即接文件名，不能再加参数
-     >
-     >
-   
+    -x ： 解压缩压缩档案的参数；
+    -z ： 是否需要用gzip压缩；
+    -v： 压缩的过程中显示档案；
+    -f： 置顶文档名,在f后面立即接文件名，不能再加参数
+    -C: 指定解压目录
+
    ```shell
-   
+   tar -zxv -C ./mm -f 20190614.tar.gz export/home/cosconedi/app2/intermedia/20190614/intermedia/COS_CPGP/BKGEQD/20190614/I_F4CFEE06B7DF9D03D59B83527B67F549
    ```
-   
-   
+
+   **-f 不能跟在前面的-zxv后面，否则后面再加参数就无效了**
+
+![1563519707743](D:\Typora\MKDFiles\media\1563519707743.png)
+
+
+
