@@ -7,6 +7,8 @@
 - https://blog.51cto.com/tianxingzhe/1651384
 - https://www.ibm.com/developerworks/cn/java/j-lo-visualvm/
 - https://www.jianshu.com/p/bb4ba6612392
+- [Java多线程的监控分析工具(VisualVM)][http://developer.51cto.com/art/201203/326397.htm]
+- [Visual GC 插件使用][https://www.jianshu.com/p/9e4ccd705709]
 
 
 
