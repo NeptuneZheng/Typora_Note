@@ -1,9 +1,9 @@
 # 										Install Rancher with Docker
 
 - [Rancher Doc][https://www.rancher.cn/docs/rancher/v2.x/cn/installation/single-node-install/]
-
 - [Step by Step！Rancher 2.2+K3s集成部署实践教程 ][https://yq.aliyun.com/articles/704089]
 - [Running K3S][https://rancher.com/docs/k3s/latest/en/running/]
+- [Docker和K8S(Kubernetes）][https://blog.csdn.net/luzhensmart/article/details/90524772]
 
 ## 1. Get latest stable Rancher from DockerHub
 
@@ -131,5 +131,58 @@ get above result proves import sucess, wait a moment will find K3S in rancher
 
 
 
+## 6. Install K3S Solution 2 with install.sh
 
+- [k3s github link](https://github.com/rancher/k3s)
+
+-  [install.sh](..\files\install.sh) 
+- [ 你的第一次轻量级K8S体验 —— 记一次Rancher 2.2 + K3S集成部署过程 ](https://yq.aliyun.com/articles/704089)
+- [k8s yaml文件详解][https://blog.csdn.net/yuxiang1014/article/details/85018741]
+
+### 6.1 download `install.sh` file from github and upload to linux server.
+
+### 6.2 update `install.sh` file about service file create part
+
+>  **ExecStart**=/usr/local/bin/k3s server --docker --no-deploy traefik
+
+### 6.3 start install.sh and finish k3s install
+
+```linux
+bash install.sh
+```
+
+### 6.4 import k3s to Rancher with the same way of solution1
+
+---
+
+---
+
+## Problems:
+
+**1 .if you'd import k3s to rancher cluster before, when you remove the cluster and creat another new cluster, the import curl cmd will not works since the yml file not existed **
+
+> error description: error: no objects passed to apply
+
+**Sulution:**  pending ...
+
+i'd pull rancher/rancher:stable image and deploy again:
+
+```linux
+docker run -d --restart=unless-stopped -p 7080:80 -p 7443:443 \
+-v /docker_volume/rancher_stable/rancher:/var/lib/rancher \
+-v /docker_volume/rancher_stable/auditlog:/var/log/auditlog \
+--name rancher rancher/rancher:stable
+```
+
+and import to rancher with below cmd:
+
+```linux
+curl --insecure -sfL https://192.168.117.128:7443/v3/import/qfhkfxfrzv8qz657svqkxdkgxg95nm6htfpn2mz4l5ntg8j244t2sx.yaml | sudo kubectl apply -f -
+```
+
+run k3s agent:
+
+```linux
+sudo k3s agent --server https://127.0.0.1:6443 --token K10c449893a66f16fa480134c538dfd765a510c681bda4584c3b2fb8f30aa52dbff::node:a01478a06dd51450b176d4e4ae6e0bec
+```
 
