@@ -3,7 +3,28 @@
 3. [ASCII码表][https://www.litefeel.com/tools/ascii.php]
 4. [Unicode字符集][https://www.rapidtables.com/code/text/unicode-characters.html]
 5. [GC(Allocation Failure)引发的一些JVM知识点梳理][https://blog.csdn.net/zc19921215/article/details/83029952]
-6. [Excel 找出两列中的相同或不同的数据][https://jingyan.baidu.com/article/19020a0a68bd5d529d28429d.html]
-7. [Oracle建立表空间和用户][https://blog.csdn.net/starnight_cbj/article/details/6792364]
-8. [oracle导出表结构1][https://wenku.baidu.com/view/94d33a95a0116c175f0e4824.html]
 
+
+
+### Oracle
+
+1. [Oracle建立表空间和用户][https://blog.csdn.net/starnight_cbj/article/details/6792364]
+2. [oracle导出表结构1][https://wenku.baidu.com/view/94d33a95a0116c175f0e4824.html]
+3. [Oracle数据库联合主键][https://blog.csdn.net/long_long_ago1/article/details/82670911]
+4. [Oracle之唯一性约束(UNIQUE Constraint)用法详解][https://blog.csdn.net/liuxiangke0210/article/details/78752275]
+5. [oracle添加外键约束的两种方式][https://blog.csdn.net/lydia88/article/details/84500812]
+
+
+
+### SpringBoot&Java
+
+1. [ spring-boot-starters][https://github.com/spring-projects/spring-boot/tree/v2.1.0.RELEASE/spring-boot-project/spring-boot-starters]
+2. [CAS原子操作以及其在Java中的应用][https://www.jianshu.com/p/973efae31be3]
+3. [SpringBoot中使用SpringDataJPA](https://www.cnblogs.com/wadmwz/p/10313495.html)
+4. [Spring Boot JPA 使用以及设置多个主键](https://blog.csdn.net/xx326664162/article/details/80053719)
+
+
+
+### Excel
+
+1. [Excel 找出两列中的相同或不同的数据][https://jingyan.baidu.com/article/19020a0a68bd5d529d28429d.html]

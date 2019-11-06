@@ -1,0 +1,125 @@
+# Kafka Usage Guidline
+
+**Reference:**
+
+- [rocketMq和kafka的架构区别][https://www.jianshu.com/p/c474ca9f9430]
+- [Kafka学习之路 （一）Kafka的简介](https://www.cnblogs.com/qingyunzong/p/9004509.html)
+- [docker安装kafka][https://www.jianshu.com/p/e8c29cba9fae]
+
+
+
+---
+
+### 1. Pull/Deploy Kafka and Zookeeper docker images
+
+```linux
+docker pull wurstmeister/kafka
+docker pull wurstmeister/zookeeper
+```
+
+```linux
+docker run -d --name zookeeper -p 2181:2181 -v /etc/localtime:/etc/localtime wurstmeister/zookeeper:latest
+
+docker run -d --name kafka -p 9092:9092 -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=192.168.117.129:2181/kafka -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://192.168.117.129:9092 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -v /etc/localtime:/etc/localtime wurstmeister/kafka:latest
+```
+
+>  **-e KAFKA_BROKER_ID=0** 在kafka集群中，每个kafka都有一个BROKER_ID来区分自己
+>
+>  **-e KAFKA_ZOOKEEPER_CONNECT=192.168.117.129:2181/kafka** 配置zookeeper管理kafka的路径192.168.117.129:2181/kafka
+>
+>  **-e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://192.168.117.129:9092** 把kafka的地址端口注册给zookeeper
+>
+>  **-e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092** 配置kafka的监听端口
+>
+>  **-v /etc/localtime:/etc/localtime** 容器时间同步虚拟机的时间 
+
+### 2. Create Topic and Testing by Producer sh
+
+#### 2.1 Check if Kafka ready
+
+```linux
+docker exec -it kafka /bin/sh   //get into kafka container inside
+cd  opt/kafka_2.12-2.3.0/bin
+```
+
+![1572316562326](../../media/1572316562326.png)
+
+#### 2.2 Run kafka producer to create message
+
+```
+./kafka-console-producer.sh --broker-list localhost:9092 --topic sun  
+```
+
+![1572316918287](../../media/1572316918287.png)
+
+#### 2.3 Run kafka consumer consume message
+
+```linux
+./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic sun --from-beginning
+```
+
+![1572316986103](../../media/1572316986103.png)
+
+
+
+#### 2.4 Go into Zookeeper Container inside
+
+```linux
+docker exec -it zookeeper /bin/sh    //into zookeeper container
+ls  								//list 
+cd bin
+./zkCli.sh   					   //run zookeeper client
+```
+
+![1572315957583](../../media/1572315957583.png)
+
+
+
+```linux
+ls /    //check all catalogs under zookeepe root
+```
+
+![1572317562104](../../media/1572317562104.png)
+
+```linux
+ls /kafka/brokers/topics/sun/partitions  // check the sun topic created in 2.2 and it's 										//	partition
+```
+
+![1572317818859](../../media/1572317818859.png)
+
+```linux
+get /kafka/brokers/topics/sun          // check sun topic's properties info
+```
+
+![1572317918635](../../media/1572317918635.png)
+
+```linux
+ls2 /kafka/brokers/topics/sun         //show child node info of sun topic
+```
+
+![1572318054795](../../media/1572318054795.png)
+
+### 3. Create Topic and Partitions by Command
+
+***go into kafka container inside first(follow step 2.1)***
+
+```linux
+docker exec -it kafka /bin/sh
+cd  opt/kafka_2.12-2.3.0/bin
+
+kafka-topics.sh --create --zookeeper 192.168.117.129:2181/kafka --topic topic-test1 --replication-factor 1 --partitions 2
+```
+
+![1572319258457](../../media/1572319258457.png)
+
+- when replication-factor > 1 will get below error
+
+```linux
+kafka-topics.sh --create --zookeeper 192.168.117.129:2181/kafka --topic topic-test1 --replication-factor 3 --partitions 2
+```
+
+![1572319334904](../../media/1572319334904.png)
+
+> root cause and solution:
+>
+> ​    one `broker` can only support one `replication-factor`. For this case, need to add 2 more 
