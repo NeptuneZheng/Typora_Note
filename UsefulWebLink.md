@@ -4,6 +4,7 @@
 4. [Unicode字符集][https://www.rapidtables.com/code/text/unicode-characters.html]
 5. [GC(Allocation Failure)引发的一些JVM知识点梳理][https://blog.csdn.net/zc19921215/article/details/83029952]
 6. [用于浏览源代码的网站][http://grepcode.com/]
+7. [BgRemover - 在线图片去底工具 - 将纯色背景的图片转换为背景透明的图片](http://www.aigei.com/bgremover/)
 
 
 
@@ -68,5 +69,6 @@
 ### Nginx
 
 1. [每天一个linux命令13之curl发送http请求](https://www.cnblogs.com/edgedance/p/7096660.html)
-2. [Nginx https配置 和 反向代理到spring boot和vue.js](https://segmentfault.com/a/1190000016760251)(有bug)
+2. [nginx docker容器配置https(ssl)](https://segmentfault.com/a/1190000017753319)
+3. [Nginx https配置 和 反向代理到spring boot和vue.js](https://segmentfault.com/a/1190000016760251)(return 301 https://$server_name$request_uri;有bug),可参考 [nginx.conf](files\nginx.conf) 
 
