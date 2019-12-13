@@ -8,5 +8,122 @@
 
 > `当前类加载器(Current ClassLoader)`: 加载当前类的类加载器。一般的，每个类都会使用自己的类加载器（即当前类加载器）来加载该类所依赖的其他类，比如ClassX引用了ClassY，那么ClassX的类加载器就会尝试去加载ClassY（前提是ClassY还没有被加载）。
 >
->  `线程上下文类加载器(Context ClassLoader)`: 从JDK1.2开始引入，Thread类中的getContextClassLoader()与setContextClassLoader(ClassLoader cl)，分别用来获取和设置`上下文类加载器`。如果没有使用setContextClassLoader(ClassLoader cl)进行设置的话，线程将继承其`父线程`的上下文类加载器。Java应用运行时的初始线程的上下文类加载器是`系统类加载器`，在线程中运行的代码可以通过该类加载器来加载类与资源。
+>  `线程上下文类加载器(Context ClassLoader)`: 从JDK1.2开始引入，Thread类中的getContextClassLoader()与setContextClassLoader(ClassLoader cl)，分别用来获取和设置`上下文类加载器`。如果没有使用setContextClassLoader(ClassLoader cl)进行设置的话，线程将继承其`父线程`的上下文类加载器(Launcher类中有体现)。Java应用运行时的初始线程的上下文类加载器是`系统类加载器`，在线程中运行的代码可以通过该类加载器来加载类与资源。
+
+![1573561688258](../../media/1573561688258.png)
+
+
+
+```java
+//如果没有使用setContextClassLoader(ClassLoader cl)进行设置的话，线程将继承其`父线程`的上下文类加载器
+
+class ClassLoaderTets implements Runnable{
+
+	private Thread thread;
+
+	ClassLoaderTets() {
+		this.thread = new Thread(this);
+		thread.start();
+	}
+
+	@Override
+	public void run() {
+		ClassLoader loader = this.thread.getContextClassLoader();
+		this.thread.setContextClassLoader(loader);
+
+		System.out.println("Class: " + loader.getClass());
+		System.out.println("Parent: " + loader.getParent().getClass());
+	}
+
+	public static void main(String[] args) {
+		new ClassLoaderTets();
+	}
+}
+```
+
+![1573561498177](../../media/1573561498177.png)
+
+
+
+### 2. 线程上下文类加载器的重要性(改变了双亲委托模型)
+
+> SPI (Service Provider Interface), eg: java.sql interface
+>
+> `ServiceLoader` 是针对于SPI提供出来的类加载器
+
+
+
+***父ClassLoader可以使用当前线程Thread.currentThread().getContextClassLoader()所指定的classloader加载的类。这就改变了父classloader不能使用子classloader或者是其他没有直接父子关系的classloader加载的类的情况。即改变了双亲委托模型。***
+
+线程上线文类加载器就是当前线程的`Current Classloader`。
+
+> 在双亲委托模型下，类加载是由下自上的，即下层的类加载器会委托上层类加载器进行加载，但对于SPI来说，有些接口是Java核心库所提供的，而Java核心库是由启动类加载器加载的，而这些接口的实现却来自于不同的jar包（不同厂商提供），Java的启动类加载器是不会加载其他来源的jar包，这样传统的双亲委托模型就无法满足SPI的要求。而通过给当前线程设置上下文类加载器，就可以由设置的上下文类加载器来实现对于接口实现类的加载。***通过给当前线程设置上下文类加载器，那么在加载具体类的时候就不会由启动类加载器来加载，而是由所设置的当前线程的上下文类加载器来加载。***从而打破了双亲委托模型的限制，实现了对SPI特殊需求的满足。
+
+
+
+### 3. 线程上下文类加载器的一般使用模式（29集）
+
+#### A. 获取
+
+#### B. 使用
+
+#### C. 还原
+
+```java
+ClassLoader classloader = Thread.currentThread().getContextClassLoader(); ---获取
+
+try{									// targetTccl: target thread classloader
+    Thread.currentThread().setContextClassLoader(targetTccl);     ---
+    myMethod();	   											      --- 使用
+        //	在myMethod调用了Thread.currentThread().getContextClassLoader()，获取当前线程上下文类加载器targetTccl做某些事。
+}finally{
+    Thread.currentThread().setContextClassLoader(classloader);    --- 还原
+}
+```
+
+***ServiceLoader***(A simple service-provider loading facility)
+
+![1573648447507](../../media/1573648447507.png)
+
+```java
+ public static void main(String[] args) {
+        ServiceLoader<Driver> loader = ServiceLoader.load(Driver.class);
+        Iterator<Driver> iterator = loader.iterator();
+
+        while (iterator.hasNext()){
+            Driver driver = iterator.next();
+            System.out.println("driver: " + driver.getClass() + ", classloader: " + driver.getClass().getClassLoader());
+        }
+
+        System.out.println("**********");
+        System.out.println("ThreadContextClassLoader: " + Thread.currentThread().getContextClassLoader());
+        System.out.println("ServiceLoader ClassLoader: " + loader.getClass().getClassLoader());
+    }
+```
+
+![1573649950520](../../media/1573649950520.png)
+
+![1573649997656](../../media/1573649997656.png)
+
+
+
+# Ⅱ. 类加载器的总结与案例
+
+#### 1. Jar hell问题以及解决办法
+
+> 当一个类或者一个资源文件存在于多个jar中，就会存在jar hell问题
+
+可以通过如下代码来诊断：
+
+```java
+ClassLoader loader = Thread.currentThread().getContextClassLoader();
+String resourceName = "java/lang/String.class";
+
+Enumeration<URL> urls = loader.getResources(resourceName);
+while(urls.hasMoreElements()){
+    URL url = urls.nextElement();
+    System.out.println(url);
+}
+```
+
 

@@ -28,9 +28,45 @@
 5. [自动维护创建时间和更新时间](https://www.bbsmax.com/A/GBJre1DWz0/)
 6. [jdbc:oracle:thin:@192.168.3.98:1521:orcl（详解）](https://blog.csdn.net/qingfeng45697/article/details/47779093)
 7. [SpringBoot 统一时区的方案][https://www.jianshu.com/p/504c17b35e17]
+8. [Springboot调用外部RestFul接口的几种方法](https://www.cnblogs.com/umrx/p/9387484.html)
+9. [SpringBoot-RestTemplate实现调用第三方API][https://blog.csdn.net/a1032818891/article/details/81172478]
+10. [Java实现将文件或者文件夹压缩成zip](https://www.cnblogs.com/zeng1994/p/7862288.html)
+
+
+
+### SpringBoot JPA
+
+1. [Spring Data JPA，一种动态条件查询的写法](https://www.cnblogs.com/derry9005/p/6282571.html)
+2. [SpringBoot中使用SpringDataJPA](https://www.cnblogs.com/wadmwz/p/10313495.html)
+3. [java-jpa-criteriaBuilder使用](https://www.cnblogs.com/g-smile/p/9177841.html)
+
+
+
+### SpringBoot Mybatis
+
+1. [spring boot 如何优雅的使用mybatis-spring-boot-starter][https://blog.csdn.net/zmx729618/article/details/80773887]
+2. [Spring Boot中集成Mybatis(动态拼接SQL)][https://blog.csdn.net/hdn_kb/article/details/100139885]
+3. [MyBatis中的@results注解使用][https://blog.csdn.net/weixin_44149454/article/details/90373036]
+4. [Spring Data Specification的用法,group by,order by及复杂情况和Pageable的注意事项](https://blog.csdn.net/qq_36564291/article/details/88717082)
+5. [Spring Data Jpa：分页、Specification、Criteria][https://www.jianshu.com/p/e7882c4f29b6]
+6. [spring data jpa Specification 复杂查询+分页查询](https://www.cnblogs.com/hankuikui/p/11414316.html)
 
 
 
 ### Excel
 
 1. [Excel 找出两列中的相同或不同的数据][https://jingyan.baidu.com/article/19020a0a68bd5d529d28429d.html]
+
+
+
+### Docker
+
+1. [【docker-compose】docker-compose.yml文本内容详解 + docker-compose命令详解 + docker-compose启动服务容器时区设置](https://www.cnblogs.com/sxdcgaq8080/p/10072040.html)
+
+
+
+### Nginx
+
+1. [每天一个linux命令13之curl发送http请求](https://www.cnblogs.com/edgedance/p/7096660.html)
+2. [Nginx https配置 和 反向代理到spring boot和vue.js](https://segmentfault.com/a/1190000016760251)(有bug)
+
