@@ -40,6 +40,7 @@
 1. [Spring Data JPA，一种动态条件查询的写法](https://www.cnblogs.com/derry9005/p/6282571.html)
 2. [SpringBoot中使用SpringDataJPA](https://www.cnblogs.com/wadmwz/p/10313495.html)
 3. [java-jpa-criteriaBuilder使用](https://www.cnblogs.com/g-smile/p/9177841.html)
+4. https://www.bbsmax.com/A/1O5EnjYbd7/
 
 
 
@@ -70,5 +71,6 @@
 
 1. [每天一个linux命令13之curl发送http请求](https://www.cnblogs.com/edgedance/p/7096660.html)
 2. [nginx docker容器配置https(ssl)](https://segmentfault.com/a/1190000017753319)
-3. [Nginx https配置 和 反向代理到spring boot和vue.js](https://segmentfault.com/a/1190000016760251)(return 301 https://$server_name$request_uri;有bug),可参考 [nginx.conf](files\nginx.conf) 
+3. [HTTPs setup - Certbot + Docker + Nginx](https://www.jianshu.com/p/a4692f1e3208)
+4. [Nginx https配置 和 反向代理到spring boot和vue.js](https://segmentfault.com/a/1190000016760251)(return 301 https://$server_name$request_uri;有bug),可参考 [nginx.conf](files\nginx.conf) 
 
