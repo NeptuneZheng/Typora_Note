@@ -1,6 +1,6 @@
 
 
-# Basic Knowledge of Class Loading - Ⅰ
+# 1：Basic Knowledge of Class Loading - Ⅰ
 
 > **在Java代码中，类的加载、连接与初始化过程都是在程序运行期间完成的。提供了更大的灵活性，增加了更多的可能性。**（C或C++是在编译期确定的）
 
