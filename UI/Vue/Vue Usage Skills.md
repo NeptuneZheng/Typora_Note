@@ -52,3 +52,45 @@ beforeRouteLeave (to, from, next) {
 }
 ```
 
+### 四、Vue watch单个值变化
+
+- [vue 2.0 watch 监听对象的变化](https://www.cnblogs.com/anani/p/9287986.html)
+
+#### 1. data
+
+```js
+  data () {
+    return {
+      searchData: {
+        messageRecord: {
+          organizationId: '',
+          messageRecordId: '',
+          status: '',
+          inputFileName: '',
+          outputFileName: '',
+          channelName: '',
+        },
+        test: '',
+        totalSize: null,
+        currentPage: 1,
+        limit: 10
+      },
+    }
+  }
+```
+
+#### 2. watch
+
+```js
+  watch: {
+    'searchData.messageRecord.organizationId': {
+      handler: function (value, oldValue) {  //必须使用handler
+        this.initChannelNameList(value)
+        this.searchData.messageRecord.channelName = ''
+
+      },
+      deep: true,
+    },
+  },
+```
+
