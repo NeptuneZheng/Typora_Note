@@ -33,7 +33,7 @@ class JMSService {
 	JmsTemplate jmsTemplate
 
 	void sendMessage(String message){
-		jmsTemplate.convertAndSend("CS.B2B.FWK2.MCI2.JOB_REQ.IN.QUE",message)
+		jmsTemplate.convertAndSend("TEST.IN.QUE",message)
 	}
 
 
@@ -93,11 +93,93 @@ class JMSService {
 	JmsTemplate jmsTemplate
 
 	void sendMessage(String message){
-		jmsTemplate.convertAndSend("CS.B2B.FWK2.MCI2.JOB_REQ.IN.QUE",message)
+		jmsTemplate.convertAndSend("TEST.IN.QUE",message)
 	}
 
 
 }
+
+```
+
+
+
+## Ⅲ.  how to get yml properties
+
+- [@ConfigurationProperties获取值和@Value获取值比较](https://blog.csdn.net/clmmei_123/article/details/81871836)
+
+|                     | @ConfigurationProperties | @Value       |
+| ------------------- | ------------------------ | ------------ |
+| 功能                | 批量注入配置文件中的属性 | 一个一个注入 |
+| 松散绑定（松散语法) | 支持                     | 不支持       |
+| SpEL语法( #{ } )    | 不支持                   | 支持         |
+| JSR303数据校验      | 支持                     | 不支持       |
+| 复杂类型封装        | 支持                     | 不支持       |
+
+
+
+
+
+```yml
+jwt:
+  header: test
+  secret: kkkkk
+  expire: 3600
+```
+
+```groovy
+class Test {
+	private String header
+	private String secret
+	private long expire
+}
+```
+
+
+
+### 一. use @Value
+
+```groovy
+class Test {
+    @Value(value = '${jwt.header}')
+	private String header
+    @Value(value = '${jwt.secret}')
+	private String secret
+    @Value(value = '${jwt.expire}')
+	private long expire
+}
+```
+
+
+
+### 二. use @ConfigurationProperties
+
+```gradle
+implementation 'org.springframework.boot:spring-boot-configuration-processor'
+```
+
+```groovy
+@Component
+@ConfigurationProperties(prefix = "jwt", ignoreUnknownFields = true)
+class Test {
+	private String header
+	private String secret
+	private long expire
+    
+    //@ConfigurationProperties will injection by setter functions
+    //can't use lombok's @Setter annotation as an alternative
+    void setHeader(String header) {
+		this.header = header
+	}
+
+	void setSecret(String secret) {
+		this.secret = secret
+	}
+
+	void setExpire(long expire) {
+		this.expire = expire
+	}
+}
+
 
 ```
 
