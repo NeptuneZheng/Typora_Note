@@ -12,13 +12,18 @@
 
 1. [BgRemover - 在线图片去底工具 - 将纯色背景的图片转换为背景透明的图片](http://www.aigei.com/bgremover/)
 2. [SVG Sprites还原工具，内置Font Awesome小图标](https://www.zhangxinxu.com/sp/icon/)
-3. [vue中watch的几种用法](https://blog.csdn.net/wangbinXMU/article/details/97619725)
+3. [前端数据可视化echarts.js使用指南](https://www.cnblogs.com/st-leslie/p/5771241.html)
+4. [vue项目中vue-echarts讲解及常用图表方案实现](https://blog.csdn.net/zhongguohaoshaonian/article/details/89405546)
+5. [数据可视化echarts](https://echarts.apache.org/examples/zh/index.html)
+6. [数据可视化vue-echarts](https://github.com/ecomfe/vue-echarts)
+7. [数据可视化AntV](https://antv.vision/zh)
 
 
 
 ### UI-Vue
 
 1. [Vue的computed和watch的细节全面分析](https://segmentfault.com/a/1190000012948175?utm_source=tag-newest)
+2. [vue中watch的几种用法](https://blog.csdn.net/wangbinXMU/article/details/97619725)
 
 
 
