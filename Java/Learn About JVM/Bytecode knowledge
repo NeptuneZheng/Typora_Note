@@ -281,6 +281,12 @@ class TestException {
 
 > 调用接口中的方法，实际上是在运行期决定的，决定到底调用实现该接口的哪个对象的特定方法。
 
+
+
+##### 2. invokestatic    <----静态解析
+
+> 调用静态方法
+
 ```java
 class TestInvoke {
     public static void testStatic(){
@@ -294,13 +300,118 @@ class TestInvoke {
 }
 ```
 
+
+
 ![1590068974826](../../media/1590068974826.png)
 
 
 
-##### 2. invokestatic    <----静态解析
+- **方法的静态分派**
 
-> 调用静态方法
+> ```java
+> GrandFather g1 = new Father();
+> ```
+>
+> 以上代码，g1的`静态模型`是GrandFather，而g1的`实际类型`（真正指向的类型）是Father。
+>
+> 我们可以得出这样一个结论：
+>
+> ​		**变量的`静态类型`是不会发生变化的，而变量的`实际类型`则可以发生变化（多态的一种体现），实际类型要在运行期才能确定。**
+>
+> ​		***方法重载，是一种静态行为，编译期就可完全确定。***
+
+```java
+class TestInvoke {
+    
+    //方法重载，参数类型取决于变量声明的类型，而非实际类型
+    public void test(GrandFather grandFather){
+        System.out.println("grand father");
+    }
+
+    public void test(Father father){
+        System.out.println("father");
+    }
+
+    public void test(Son son){
+        System.out.println("son");
+    }
+
+    public static void main(String[] args) {
+        TestInvoke invoke = new TestInvoke();
+
+        GrandFather g1 = new Father();
+        GrandFather g2 = new Son();
+
+        invoke.test(g1);
+        invoke.test(g2);
+    }
+
+}
+
+
+class GrandFather{
+
+}
+
+class  Father extends GrandFather{
+
+}
+
+class Son extends Father{
+
+}
+```
+
+![1591016272581](../media/1591016272581.png)
+
+
+
+- **方法的动态分派**
+
+
+
+```java
+class TestInvoke {
+
+    public static void main(String[] args) {
+        GrandPa g1 = new GrandPa();
+        GrandPa g2 = new Father();
+
+        g1.test();
+        g2.test();
+
+        g1 = new Son();
+        g1.test();
+
+    }
+
+}
+
+
+class GrandPa {
+    public void test(){
+        System.out.println("GrandPa");
+    }
+}
+
+class Father extends GrandPa {
+    public void test(){
+        System.out.println("Father");
+    }
+}
+
+class Son extends Father {
+    public void test(){
+        System.out.println("Son");
+    }
+}
+```
+
+![1591017353196](../media/1591017353196.png)
+
+![1591018898576](../media/1591018898576.png)
+
+
 
 ##### 3. invokespecial  <----静态解析
 
