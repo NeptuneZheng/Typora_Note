@@ -1,22 +1,67 @@
 1. [正则表达式性能测试](https://regex101.com/)
 2. [正则表达式全集](http://tool.oschina.net/uploads/apidocs/jquery/regexp.html)
-3. [ASCII码表](https://www.litefeel.com/tools/ascii.php)
-4. [Unicode字符集](https://www.rapidtables.com/code/text/unicode-characters.html)
-5. [GC(Allocation Failure)引发的一些JVM知识点梳理](https://blog.csdn.net/zc19921215/article/details/83029952)
-6. [用于浏览源代码的网站](http://grepcode.com/)
-7. [七种开源许可证](https://www.jianshu.com/p/86251523e898)
+3. [ HTTP状态码详解 ](https://tool.oschina.net/commons?type=5)
+4. [ASCII码表](https://www.litefeel.com/tools/ascii.php)
+5. [Unicode字符集](https://www.rapidtables.com/code/text/unicode-characters.html)
+6. [GC(Allocation Failure)引发的一些JVM知识点梳理](https://blog.csdn.net/zc19921215/article/details/83029952)
+7. [用于浏览源代码的网站](http://grepcode.com/)
+8. [如何画好架构图](https://www.sohu.com/a/399858959_465221)
+9. [七种开源许可证](https://www.jianshu.com/p/86251523e898)
 
 ![5420598-95ed1ef9be4caf3f](media/5420598-95ed1ef9be4caf3f.webp)
 
 ### UI
 
 1. [BgRemover - 在线图片去底工具 - 将纯色背景的图片转换为背景透明的图片](http://www.aigei.com/bgremover/)
+
 2. [SVG Sprites还原工具，内置Font Awesome小图标](https://www.zhangxinxu.com/sp/icon/)
+
 3. [前端数据可视化echarts.js使用指南](https://www.cnblogs.com/st-leslie/p/5771241.html)
+
 4. [vue项目中vue-echarts讲解及常用图表方案实现](https://blog.csdn.net/zhongguohaoshaonian/article/details/89405546)
+
 5. [数据可视化echarts](https://echarts.apache.org/examples/zh/index.html)
+
 6. [数据可视化vue-echarts](https://github.com/ecomfe/vue-echarts)
-7. [数据可视化AntV](https://antv.vision/zh)
+
+7. > [vue 项目使用echarts异步加载，xAxis坐标轴不显示](https://blog.csdn.net/weixin_39581226/article/details/83755746) 
+   >
+   > ![1592788454955](media/1592788454955.png)
+   >
+   > ``` js
+   >     myEcharts () {
+   >       var myChart = this.$echarts.init(document.getElementById('main'))
+   > 
+   >       myChart.setOption(this.option);
+   >       myChart.setOption({
+   >         xAxis: [
+   >           {
+   >             data: this.option.xAxis.data,
+   >           }
+   >         ]
+   >       });
+   >     }
+   > ```
+   >
+   > 
+
+8. [数据可视化AntV](https://antv.vision/zh)
+
+9. [echarts antv 区别比较？](https://www.zhihu.com/question/57388387?sort=created)
+
+10. [比站酷网更好的设计网站有哪些？](https://www.zhihu.com/question/20369808/answer/1218150388)
+
+11. [D3.js：交互式操作](https://www.cnblogs.com/koto/p/5980693.html)
+
+12. [在vue中使用基于d3为基础的dagre-d3.js搞定一个流程图组件](https://www.cnblogs.com/liushusong/p/11996770.html)
+
+13. [jsPlumb 与 vue 学习总结](https://zhuanlan.zhihu.com/p/43642654)
+
+14. [jsplumb 中文教程](https://wdd.js.org/jsplumb-chinese-tutorial/#/)
+
+15. [jstree树形文件夹用vue.js组件格式做出来](https://blog.csdn.net/lx_axiao/article/details/54288455)
+
+16. [npm: vue-tree](https://www.npmjs.com/package/vue-jstree)
 
 
 
@@ -43,25 +88,29 @@
 
 1. [ spring-boot-starters](https://github.com/spring-projects/spring-boot/tree/v2.1.0.RELEASE/spring-boot-project/spring-boot-starters)
 
-2. [CAS原子操作以及其在Java中的应用](https://www.jianshu.com/p/973efae31be3)
+2. > [模板引擎: FreeMarker](http://freemarker.foofun.cn/)   
+   >
+   > FreeMarker 是一款 *模板引擎*： 即一种基于模板和要改变的数据， 并用来生成输出文本(HTML网页，电子邮件，配置文件，源代码等)的通用工具。 它不是面向最终用户的，而是一个Java类库，是一款程序员可以嵌入他们所开发产品的组件。
 
-3. [SpringBoot中使用SpringDataJPA](https://www.cnblogs.com/wadmwz/p/10313495.html)
+3. [CAS原子操作以及其在Java中的应用](https://www.jianshu.com/p/973efae31be3)
 
-4. [Spring Boot JPA 使用以及设置多个主键](https://blog.csdn.net/xx326664162/article/details/80053719)
+4. [SpringBoot中使用SpringDataJPA](https://www.cnblogs.com/wadmwz/p/10313495.html)
 
-5. [自动维护创建时间和更新时间](https://www.bbsmax.com/A/GBJre1DWz0/)
+5. [Spring Boot JPA 使用以及设置多个主键](https://blog.csdn.net/xx326664162/article/details/80053719)
 
-6. [jdbc:oracle:thin:@192.168.3.98:1521:orcl（详解）](https://blog.csdn.net/qingfeng45697/article/details/47779093)
+6. [自动维护创建时间和更新时间](https://www.bbsmax.com/A/GBJre1DWz0/)
 
-7. [SpringBoot 统一时区的方案](https://www.jianshu.com/p/504c17b35e17)
+7. [jdbc:oracle:thin:@192.168.3.98:1521:orcl（详解）](https://blog.csdn.net/qingfeng45697/article/details/47779093)
 
-8. [Springboot调用外部RestFul接口的几种方法](https://www.cnblogs.com/umrx/p/9387484.html)
+8. [SpringBoot 统一时区的方案](https://www.jianshu.com/p/504c17b35e17)
 
-9. [SpringBoot-RestTemplate实现调用第三方API](https://blog.csdn.net/a1032818891/article/details/81172478)
+9. [Springboot调用外部RestFul接口的几种方法](https://www.cnblogs.com/umrx/p/9387484.html)
 
-10. [Java实现将文件或者文件夹压缩成zip](https://www.cnblogs.com/zeng1994/p/7862288.html)
+10. [SpringBoot-RestTemplate实现调用第三方API](https://blog.csdn.net/a1032818891/article/details/81172478)
 
-11. [spring-data-mongodb-remove-_class-define-explicitly](http://athlan.pl/spring-data-mongodb-remove-_class-define-explicitly/)
+11. [Java实现将文件或者文件夹压缩成zip](https://www.cnblogs.com/zeng1994/p/7862288.html)
+
+12. [spring-data-mongodb-remove-_class-define-explicitly](http://athlan.pl/spring-data-mongodb-remove-_class-define-explicitly/)
 
     ```java
     @Configuration
@@ -91,7 +140,6 @@
     }
     ```
 
-    12. 
 
 
 
