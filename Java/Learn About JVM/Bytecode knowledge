@@ -281,7 +281,81 @@ class TestException {
 
 > 调用接口中的方法，实际上是在运行期决定的，决定到底调用实现该接口的哪个对象的特定方法。
 
-
+> 动态代理实例
+>
+> - interface
+>
+> ```java
+> public interface Speak {
+>     void hello();
+> }
+> ```
+>
+> - implement class
+>
+> ```java
+> public class Human implements Speak {
+>     @Override
+>     public void hello() {
+>         System.out.println("我要吃饭");
+>     }
+> 
+>     @Override
+>     public String toString() {
+>         System.out.println("hhhh");
+>         return "hhhh";
+>     }
+> }
+> ```
+>
+> - invocation handler class
+>
+> ```java
+> class MyDynamicHandler implements InvocationHandler {
+>     private Speak speak;
+> 
+>     MyDynamicHandler(Speak speak) {
+>         this.speak = speak;
+>     }
+> 
+>     @Override
+>     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+>         System.out.println("你好！" + method);
+> 
+>         method.invoke(speak,args);
+>         System.out.println("谢谢！" + method);
+> 
+>         return null;
+>     }
+> }
+> ```
+>
+> - main test class --   [$Proxy0.class](..\..\files\$Proxy0.class) 
+>
+> ```java
+> public class Client {
+>     public static void main(String[] args) {
+>         System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles","true");  //setup for save generated class to local.
+>         
+>         Human human = new Human();
+>         InvocationHandler handler = new MyDynamicHandler(human);
+> 
+>         Class<?> clz = human.getClass();
+> 
+>         Speak speak = (Speak) Proxy.newProxyInstance(clz.getClassLoader(),clz.getInterfaces(),handler);
+> 
+>         System.out.println("class: "+speak.getClass());
+>         System.out.println("superClass: " + speak.getClass().getSuperclass());
+> 
+>         speak.hello();
+>         speak.toString();
+>     }
+> }
+> ```
+>
+> ![1593439956678](../media/1593439956678.png)
+>
+> 
 
 ##### 2. invokestatic    <----静态解析
 
@@ -422,7 +496,7 @@ class Son extends Father {
 
 ##### 字节码的解释执行
 
-现代JVM在执行Java代码时候，通常会将`编译执行`与`解释执行`结合起来
+现代JVM在执行Java代码时候，通常会将`编译执行`与`解释执行`结合起来   （56集实例字节码演示）
 
 > 基于栈的指令集与基于寄存器的指令集之间的关系：
 >
@@ -455,5 +529,7 @@ class Son extends Father {
 
 > 动态调用方法。(JDK1.7引入)通过引擎给予Java动态调用代码的能力，比如说动态调用JS、Python、Groovy等。
 
-- 56
+
+
+- 59
 
