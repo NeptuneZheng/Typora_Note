@@ -140,6 +140,12 @@
     }
     ```
 
+13. [Spring为IOC容器注入Bean的五种方式详解](https://www.jb51.net/article/173024.htm)
+
+14. [SpringBoot+SpringSecurity+jwt整合及初体验](https://blog.csdn.net/qq_19006223/article/details/90732630)
+
+15. [Spring Boot 中使用 Spring Security, OAuth2 跨域问题 (自己挖的坑)](https://www.cnblogs.com/victorbu/p/11178696.html)
+
 
 
 
