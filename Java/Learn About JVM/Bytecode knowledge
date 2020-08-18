@@ -1,4 +1,4 @@
-# 2：Basic Knowledge of Class Loading-Ⅱ
+# 3：Bytecode knowledge
 
 ## Ⅰ. 查看字节码文件
 
@@ -530,6 +530,4 @@ class Son extends Father {
 > 动态调用方法。(JDK1.7引入)通过引擎给予Java动态调用代码的能力，比如说动态调用JS、Python、Groovy等。
 
 
-
-- 59
 
