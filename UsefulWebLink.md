@@ -4,9 +4,10 @@
 4. [ASCII码表](https://www.litefeel.com/tools/ascii.php)
 5. [Unicode字符集](https://www.rapidtables.com/code/text/unicode-characters.html)
 6. [GC(Allocation Failure)引发的一些JVM知识点梳理](https://blog.csdn.net/zc19921215/article/details/83029952)
-7. [用于浏览源代码的网站](http://grepcode.com/)
-8. [如何画好架构图](https://www.sohu.com/a/399858959_465221)
-9. [七种开源许可证](https://www.jianshu.com/p/86251523e898)
+7. [Groovy里自定义JSON输出-JsonGenerator](https://my.oschina.net/wstone/blog/3094449)
+8. [用于浏览源代码的网站](http://grepcode.com/)
+9. [如何画好架构图](https://www.sohu.com/a/399858959_465221)
+10. [七种开源许可证](https://www.jianshu.com/p/86251523e898)
 
 ![5420598-95ed1ef9be4caf3f](media/5420598-95ed1ef9be4caf3f.webp)
 
@@ -63,12 +64,45 @@
 
 16. [npm: vue-tree](https://www.npmjs.com/package/vue-jstree)
 
+17. [用JavaScript修改CSS属性的代码](https://www.cnblogs.com/aademeng/articles/6279042.html)
+
+18. [vue中 getElementsByClassName().innerHtml无法给元素赋值 跪求大佬！](https://segmentfault.com/q/1010000014821304)
+
+
+
+### Js
+
+1. [js对象拷贝的方法](https://www.cnblogs.com/hjson/p/10243806.html)
+
+
+
 
 
 ### UI-Vue
 
 1. [Vue的computed和watch的细节全面分析](https://segmentfault.com/a/1190000012948175?utm_source=tag-newest)
+
 2. [vue中watch的几种用法](https://blog.csdn.net/wangbinXMU/article/details/97619725)
+
+3. [Vue子组件调用父组件的方法](https://www.cnblogs.com/jin-zhe/p/9523782.html)
+
+4. [解决vue keep-alive 数据更新的问题](https://www.jb51.net/article/147815.htm)
+
+   > 在项目中使用<keep-alive>包含<router-view>实现页面缓存，加速页面加载，
+   >
+   > **同时，这种方式带来一些弊端，请看如下大神解释：**
+   >
+   > ***********************************
+   >
+   > 当引入keep-alive的时候，页面第一次进入，钩子的触发顺序created-> mounted-> activated，退出时触发deactivated。
+   >
+   > 当再次进入（前进或者后退）时，只触发activated。
+   >
+   > ***********************************
+   >
+   > 这就带来一个问题，之前在项目中使用mounted在页面加载时获取数据，使用<keep-alive>后方法不再生效，
+   >
+   > 根据上面的解释，将mounted替换为activated即可。
 
 
 
@@ -202,4 +236,14 @@
 2. [nginx docker容器配置https(ssl)](https://segmentfault.com/a/1190000017753319)
 3. [HTTPs setup - Certbot + Docker + Nginx](https://www.jianshu.com/p/a4692f1e3208)
 4. [Nginx https配置 和 反向代理到spring boot和vue.js](https://segmentfault.com/a/1190000016760251)(return 301 https://$server_name$request_uri;有bug),可参考 [nginx.conf](files\nginx.conf) 
+
+
+
+### Java 23种设计模式
+
+1. [工厂模式](https://www.cnblogs.com/long88-club/p/11055555.html)
+
+
+
+### Unit Test
 

@@ -79,3 +79,5 @@ sudo sh VBoxLinuxAdditions.run
 
 
 
+### 6. Port mapping with host 
+
