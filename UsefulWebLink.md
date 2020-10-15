@@ -74,6 +74,26 @@
 
 1. [js对象拷贝的方法](https://www.cnblogs.com/hjson/p/10243806.html)
 
+   >  //不同的引用 var obj3 = JSON.parse(JSON.stringify(obj)); 
+
+2. > :tipping_hand_man: **find**:
+   >
+   > ```js
+   > ['x','xa','ax'].find(value => value.startsWith('x'))
+   > ```
+   >
+   > ![1598421560413](media/1598421560413.png)
+   >
+   > :tipping_hand_man:**findAll:**
+   >
+   > ```js
+   > ['x','xa','ax'].filter(value => value.startsWith('x'))
+   > ```
+   >
+   > ![1598421653334](media/1598421653334.png)
+
+3. [JS如何在数组指定位置插入元素](https://www.jb51.net/article/182300.htm)
+
 
 
 
@@ -103,6 +123,16 @@
    > 这就带来一个问题，之前在项目中使用mounted在页面加载时获取数据，使用<keep-alive>后方法不再生效，
    >
    > 根据上面的解释，将mounted替换为activated即可。
+
+5. [Vue forEach 内方法递归调用](https://zhouyunfang.blog.csdn.net/article/details/104979037)
+
+6. [Blog](https://github.com/ljianshu/Blog)
+
+7. [vue中不能直接在html中使用import的js方法的问题和解决方法](https://blog.csdn.net/zongmaomx/article/details/107407504)
+
+   > ![1600311607596](media/1600311607596.png)
+
+
 
 
 
@@ -180,6 +210,10 @@
 
 15. [Spring Boot 中使用 Spring Security, OAuth2 跨域问题 (自己挖的坑)](https://www.cnblogs.com/victorbu/p/11178696.html)
 
+16. [SpringBoot过滤器中的异常处理](https://zhuanlan.zhihu.com/p/134214309)
+
+17. [springboot(五)——springboot中的拦截器和过滤器小结](https://segmentfault.com/a/1190000019005504)
+
 
 
 
@@ -215,12 +249,25 @@
 9. [java大文件分块上传分享](https://blog.csdn.net/weixin_42584752/article/details/80873376)
 10. [大文件上传第二弹(分片、秒传、断点续传)](https://blog.csdn.net/haohao123nana/article/details/54692669)
 11. [SpringBoot下载文件实现及速度对比](https://blog.csdn.net/m0_38001814/article/details/89182120)
+12. [mongodb海量数据CRUD优化](https://www.cnblogs.com/xiaoqi/p/java-mongo-crud.html)
 
 
 
 ### Excel
 
 1. [Excel 找出两列中的相同或不同的数据](https://jingyan.baidu.com/article/19020a0a68bd5d529d28429d.html)
+
+
+
+### JSON
+
+1. [Free Online JSON to JSON Schema Converter](https://www.liquid-technologies.com/online-json-to-schema-converter)
+
+   > include 
+   >
+   > ​	XML format,valid, XML <-----> XSD
+   >
+   > ​	JSON format,valid, JSON<-----> JSON Schema
 
 
 
@@ -243,7 +290,77 @@
 
 1. [工厂模式](https://www.cnblogs.com/long88-club/p/11055555.html)
 
+2. [Java将域名转换成IP](https://blog.csdn.net/liang_k/article/details/40623911)
 
+   ```java
+   InetAddress.getByName(domainName).getHostAddress()
+   ```
+
+3. [HttpRequest获得服务端和客户端的详细信息](https://www.cnblogs.com/lhwblog/p/6670308.html)
+
+   ```
+   request.setCharacterEncoding("utf-8");//设置request编码方式
+   request.getLocalAddr();//获取本地IP，即服务器IP
+   request.getLocalName();//获取本地名称，即服务器名称
+   request.getLocalPort();//获取本地端口号，即Tomcat端口号
+   request.getLocale();//用户的语言环境
+   request.getContextPath();//context路径
+   request.getMethod();//GET还是POST
+   request.getProtocol();//协议，http协议
+   request.getQueryString();//查询字符串
+   request.getRemoteAddr();//远程IP，即客户端IP
+   request.getRemotePort();//远程端口，即客户端端口
+   request.getRemoteUser();//远程用户
+   request.getRequestedSessionId();//客户端的Session的ID
+   request.getRequestURI();//用户请求的URL
+   request.getScheme();//协议头，例如http
+   request.getServerName();//服务器名称
+   request.getServerPort();//服务器端口
+   
+   request.getServletPath();//Servlet路径
+   ```
+
+   
 
 ### Unit Test
+
+1. [JUnit 5 User Guide](https://junit.org/junit5/docs/current/user-guide/#writing-tests-annotations)
+
+2. [JUnit 5学习心得](https://www.jianshu.com/p/675b74549f77)
+
+3. [Junit5简介、构成、新特性及基本使用-常用注解、套件执行](https://juejin.im/post/6844903968955432967#heading-0)
+
+4. [JUnit@Before失效问题](https://www.cnblogs.com/king0207/p/13576894.html)
+
+5. [@InjectMocks 类内部@Autowired bean 为null的解决办法](https://stackoverflow.com/questions/52450754/null-pointer-on-an-autowired-bean-which-is-not-mocked-by-mockito)
+
+   > Usually when unit testing you want to mock *all* external dependencies of a class. That way the unit test can remain independent and focused on the class under test.
+   >
+   > Nevertheless, if you want to mix Spring autowiring with Mockito mocks, an easy solution is to annotate with both `@InjectMocks` and `@Autowired`:
+   >
+   > ```java
+   > @BeforeEach
+   >     public void init(){
+   >         MockitoAnnotations.initMocks(this); //在测试方法运行之前，自动把用@Mock标注过的field实例化成Mock对象(https://www.jianshu.com/p/7f6a1d3aa516)
+   >     }  
+   > 
+   > @InjectMocks
+   >   @Autowired
+   >   private UploadServiceImpl uploadService;
+   > ```
+
+6. [Mockito when(...).thenReturn(...)和doReturn(...).when(...)的区别](https://www.cnblogs.com/lanqi/p/7865163.html)
+
+
+
+### Typora
+
+1. [ Typora 完全使用详解 ](https://sspai.com/post/54912)
+2. [Mermaid Live Editor(画图)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggVERcbkFbQ2hyaXN0bWFzXSAtLT58R2V0IG1vbmV5fCBCKEdvIHNob3BwaW5nKVxuQiAtLT4gQ3tMZXQgbWUgdGhpbmt9XG5DIC0tPnxPbmV8IERbTGFwdG9wXVxuQyAtLT58VHdvfCBFW2lQaG9uZV1cbkMgLS0-fFRocmVlfCBGW2ZhOmZhLWNhciBDYXJdXG4iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9fQ)
+
+
+
+
+
+
 

@@ -94,3 +94,130 @@ beforeRouteLeave (to, from, next) {
   },
 ```
 
+### 五、Vue 同一页面显示多个Echart图覆盖问题
+
+#### 1. main page
+
+```js
+    ...
+<Row>
+      <Card dis-hover :bordered="false" style="margin-top:1%">
+        <Row slot="title" class="title">
+          <span>
+            <svg-icon icon-class="messageLineChart" class="iconCss" /> </span>
+          <span style="color: rgb(247, 180, 68);">Messages Volume</span>
+        </Row>
+        <Row v-if="isShowBarChartModel">
+          <v-chart v-bind:polar="polar" v-bind:id="polarId" ref="chart" />
+        </Row>
+        <Row v-else>
+          <strong>No Data</strong>
+        </Row>
+      </Card>
+    </Row>
+    <Row>
+      <Card dis-hover :bordered="false" style="margin-top:1%">
+        <Row slot="title" class="title">
+          <span>
+            <svg-icon icon-class="messageLineChart" class="iconCss" /> </span>
+          <span style="color: rgb(247, 180, 68);">Pie Chart</span>
+        </Row>
+        <Row v-if="isShowPieChartModel">
+          <v-chart v-bind:polar="pieChart" v-bind:id="pieId" ref="chart" />
+        </Row>
+        <Row v-else>
+          <strong>No Data</strong>
+        </Row>
+      </Card>
+    </Row>
+...
+
+import ECharts from '../ECharts/Echarts'
+import lineChartModel from '../../utils/monitorMode/LineChart'
+import barChartModel from '../../utils/monitorMode/BarChart'
+import pieChartModel from '../../utils/monitorMode/PieChart'
+
+export default {
+  name: 'Message',
+  components: {
+    'v-chart': ECharts
+  },
+  data () {
+    return {
+      isShowBarChartModel: false,
+      isShowPieChartModel: false,
+      polar: {},
+      polarId: 'polarId', // 用于echart图形渲染时区分不同ID
+      pieChart: {},
+      pieId: 'pieId' // 用于echart图形渲染时区分不同ID
+    }
+  },
+  computed: {
+  },
+  created () {
+    this.initOrganizationIdList()
+    this.initChannelList()
+  },
+  methods: {
+    async search () {
+      this.isShowBarChartModel = false
+      this.isShowPieChartModel = false
+
+        //chart 1
+        this.polar = barChartModel.barChart.polar
+        this.isShowBarChartModel = true
+        
+        //chart 2
+        this.pieChart = pieChartModel.pieChart.polar
+        this.isShowPieChartModel = true
+    },
+}
+```
+
+#### 2. Echart
+
+```Vue
+<template>
+  <Row class="Echarts">
+    <Row :id="id" style="width: 100%;height:400px;"></Row> //设置为动态ID
+  </Row>
+</template>
+
+<script>
+export default {
+  name: 'Echarts',
+  props: ['polar', 'id'], //动态的从main中获取图表ID，从而避免图形间覆盖
+  data () {
+    return {
+      option: this.polar,
+    }
+  },
+  created () {
+  },
+  methods: {
+    myEcharts () {
+      var myChart = this.$echarts.init(document.getElementById(this.id)) // 获取ID进行图形渲染
+
+      myChart.setOption(this.option);
+      if (this.option.xAxis && this.option.xAxis.data) {
+        myChart.setOption({
+          xAxis: [
+            {
+              data: this.option.xAxis.data,
+            }
+          ]
+        });
+      }
+    }
+  },
+  mounted () {
+
+    this.myEcharts();
+  }
+}
+</script>
+
+<style>
+</style>
+```
+

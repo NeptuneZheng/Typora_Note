@@ -81,3 +81,11 @@ sudo sh VBoxLinuxAdditions.run
 
 ### 6. Port mapping with host 
 
+安装bridge-utils来查案网络桥接信息
+
+```linux
+yum -y install bridge-utils
+```
+
+使用brctl show命令查看
+
