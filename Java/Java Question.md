@@ -2,7 +2,7 @@
 
 #### 1. synchronized 和 Lock有什么区别？用Lock有什么好处？
 
-![1614598130231](../../software/Typora/TyporaMKDFilesmedia/1614598130231.png)
+![1614598130231](../media/1614598130231.png)
 
 
 
@@ -40,13 +40,13 @@
 
 #### 2. 为什么要使用池（线程池，连接池类技术）
 
-![1614601607870](../../software/Typora/TyporaMKDFilesmedia/1614601607870.png)
+![1614601607870](../media/1614601607870.png)
 
 #### 3. 线程池是3个常用方法
 
 > 线程池的几个重要参数(7大参数):
 >
-> ![1614603933972](../../software/Typora/TyporaMKDFilesmedia/1614603933972.png)
+> ![1614603933972](../media/1614603933972.png)
 >
 > 
 >
@@ -68,13 +68,13 @@
 
   > 内部任务存储在LinkedBlockingQueue<Runnable>()
 
-![1614603136606](../../software/Typora/TyporaMKDFilesmedia/1614603136606.png)
+![1614603136606](../media/1614603136606.png)
 
 
 
 - **Executors.newFixedThreadPool()** --- 执行长期任务，性能好很多，线程可以轮替复用
 
-![1614603251072](../../software/Typora/TyporaMKDFilesmedia/1614603251072.png)
+![1614603251072](../media/1614603251072.png)
 
 
 
@@ -84,13 +84,13 @@
   >
   > SynchronousQueue: 不存储元素的阻塞队列，即单个元素的队列。产生一个，消费一个，超过一个就阻塞。
 
-![1614603208806](../../software/Typora/TyporaMKDFilesmedia/1614603208806.png)
+![1614603208806](../media/1614603208806.png)
 
 #### 4. 线程池底层工作原理
 
-![1614771055918](../../software/Typora/TyporaMKDFilesmedia/1614771055918.png)
+![1614771055918](../media/1614771055918.png)
 
-![1614771453188](../../software/Typora/TyporaMKDFilesmedia/1614771453188.png)
+![1614771453188](../media/1614771453188.png)
 
 #### 5.死锁编码及定位分析
 
@@ -142,7 +142,7 @@ class DeadTest {
 
 jstack找到死锁查看
 
-![1614774602153](../../software/Typora/TyporaMKDFilesmedia/1614774602153.png)
+![1614774602153](../media/1614774602153.png)
 
 #### 6. 哪些对象可以作为GC Root对象？
 
