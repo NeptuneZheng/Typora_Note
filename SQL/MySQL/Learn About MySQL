@@ -1,0 +1,9 @@
+# Learn About MySQL
+
+#### 1. DB, DBMS, SQL
+
+- **DB**: 数据库(Database): 存储数据的“仓库”。它保存了一系列**有组织的数据**。
+- **DBMS**: 数据库管理系统(Database Management System)。数据库是通过DBMS创建和操作的容器。常见的有(基于C/S架构)Oracle，MySQL, DB2, SQLServer ，Access(基于共享文件系统)...
+- **SQL**: 结构化查询语言(Structure Query Language)，专门用来与数据库通信的语言。
+
+187
